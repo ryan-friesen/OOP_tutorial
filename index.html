@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Target Practice</title>
+<link href="style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body onload="displayDistance()">
+<div class="container row">
+<div class="container col-3">
+<p>In this example, we enter four values, which represent the x and y coordinates of two points:</p>
+</div>
+<div class="container col-6">
+<table>
+<tbody>
+<tr>
+<td>
+<p>Point 1 (x)</p>
+</td>
+<td>
+<input id="point-a" length="3" />
+</td>
+</tr>
+<tr>
+<td>
+<p>Point 1(y)</p>
+</td>
+<td>
+<input id="point-b" length="3" />
+</td>
+</tr>
+<tr>
+<td>
+<p>Point 2 (x)</p>
+</td>
+<td>
+<input id="point-c" length="3" />
+</td>
+</tr>
+<tr>
+<td>
+<p>Point 2 (y)</p>
+</td>
+<td>
+<input id="point-d" length="3" />
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<button id="submit-button" onclick="setDistance(); showAngle();">Submit</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="container col-3">
+<table>
+<tbody>
+<tr>
+<td>
+<p>Distance:</p>
+</td>
+<td>
+<p id="section-one-hypot-long"></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Distance <sup>(trunc)</sup>:</p>
+</td>
+<td>
+<p id="section-one-hypot"></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Area:</p>
+</td>
+<td>
+<p id="section-one-area"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<script src="main.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
