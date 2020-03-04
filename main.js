@@ -54,15 +54,15 @@ function colorGradientCanvas() {
   c.width = 502;
   c.height = 502;
   let ctx = c.getContext("2d");
-  for(i = 0; i < 51; i++) {
-  ctx.beginPath();
-  ctx.moveTo(i * 10, 0);
-  ctx.lineTo(i * 10, 500);
-  ctx.stroke();
-  ctx.moveTo(0, i * 10);
-  ctx.lineTo(500, i * 10);
-  ctx.stroke();
-  };
+  for (i = 0; i < 51; i++) {
+    ctx.beginPath();
+    ctx.moveTo(i * 10, 0);
+    ctx.lineTo(i * 10, 500);
+    ctx.stroke();
+    ctx.moveTo(0, i * 10);
+    ctx.lineTo(500, i * 10);
+    ctx.stroke();
+  }
 }
 
 function clearRect() {
@@ -83,10 +83,17 @@ function drawLine() {
   let c = document.getElementById("visual-canvas");
   let ctx = c.getContext("2d");
   ctx.beginPath();
-  ctx.moveTo((a[0].x) * 10, (a[0].y) * 10);
-  ctx.lineTo((a[1].x) * 10, (a[1].y) * 10);
+  ctx.moveTo(a[0].x * 10, a[0].y * 10);
+  ctx.lineTo(a[1].x * 10, a[1].y * 10);
   ctx.stroke();
+}
 
+function numberSorter(a, b) {
+  let sortArray = [a, b];
+  sortArray.sort(function(a, b) {
+    return a - b;
+  });
+  return sortArray;
 }
 
 function drawRect() {
@@ -95,8 +102,11 @@ function drawRect() {
   let ctx = c.getContext("2d");
   ctx.beginPath();
   ctx.fillStyle = "#F00";
-  ctx.moveTo((a[0].x) * 10, (a[0].y) * 10);
-  ctx.fillRect((a[0].x) * 10, (a[0].y) * 10, (a[1].x) * 10, (a[1].y) * 10);
+  let sortX = numberSorter(a[0].x * 10, a[1].x * 10),
+    sortY = numberSorter(a[0].y * 10, a[1].y * 10);
+  let finalX = Math.abs(sortX[0] - sortX[1]),
+    finalY = Math.abs(sortY[0] - sortY[1]);
+  ctx.fillRect(sortX[0], sortY[0], finalX, finalY);
 }
 
 function setDistance() {
@@ -109,12 +119,10 @@ function setDistance() {
 function showAngle() {
   let angle = displayDistance();
   let a = Point.getArea(angle[0], angle[1]);
-  console.log(angle[0], angle[1]);
   document.getElementById("section-one-area").innerHTML = a;
 }
 
 function outputLine() {
   let a1 = displayDistance();
   let a = Canvas.line(a1[0], a1[1]);
-  console.log(a);
 }
