@@ -20,6 +20,24 @@ class Point {
   }
 }
 
+class Canvas {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  static line(a, b) {
+    const startX = a.x;
+    const startY = a.y;
+    const endX = b.x;
+    const endY = b.y;
+
+    let coordArray = [startX, startY, endX, endY];
+    console.log(coordArray);
+    return coordArray;
+  }
+}
+
 function displayDistance() {
   let a = document.getElementById("point-a"),
     b = document.getElementById("point-b"),
@@ -43,4 +61,10 @@ function showAngle() {
   let a = Point.getArea(angle[0], angle[1]);
   console.log(angle[0], angle[1]);
   document.getElementById("section-one-area").innerHTML = a;
+}
+
+function outputLine() {
+  let a1 = displayDistance();
+  let a = Canvas.line(a1[0], a1[1]);
+  console.log(a);
 }
