@@ -33,7 +33,6 @@ class Canvas {
     const endY = b.y;
 
     let coordArray = [startX, startY, endX, endY];
-    console.log(coordArray);
     return coordArray;
   }
 }
@@ -49,12 +48,29 @@ function displayDistance() {
   return array;
 }
 
+function createCanvasLine() {
+  let a = document.getElementById("point-a"),
+    b = document.getElementById("point-b"),
+    c = document.getElementById("point-c"),
+    d = document.getElementById("point-d");
+  const p1 = new Canvas(a.value, b.value);
+  const p2 = new Canvas(c.value, d.value);
+  let array = [p1, p2];
+
+  return array;
+}
+
 function colorGradientCanvas() {
   let c = document.getElementById("visual-canvas");
   c.width = 502;
   c.height = 502;
   let ctx = c.getContext("2d");
   for (i = 0; i < 51; i++) {
+    if (i == 25) {
+      ctx.lineWidth = 3;
+    } else {
+      ctx.lineWidth = 1;
+    }
     ctx.beginPath();
     ctx.moveTo(i * 10, 0);
     ctx.lineTo(i * 10, 500);
@@ -79,12 +95,13 @@ function fillRect() {
 }
 
 function drawLine() {
-  let a = displayDistance();
+  let a = createCanvasLine();
+  const b = Canvas.line(a[0], a[1]);
   let c = document.getElementById("visual-canvas");
   let ctx = c.getContext("2d");
   ctx.beginPath();
-  ctx.moveTo(a[0].x * 10, a[0].y * 10);
-  ctx.lineTo(a[1].x * 10, a[1].y * 10);
+  ctx.moveTo(a[0].x * 10 + 250, -a[0].y * 10 + 250);
+  ctx.lineTo(a[1].x * 10 + 250, -a[1].y * 10 + 250);
   ctx.stroke();
 }
 
@@ -97,7 +114,7 @@ function numberSorter(a, b) {
 }
 
 function drawRect() {
-  let a = displayDistance();
+  let a = createCanvasLine();
   let c = document.getElementById("visual-canvas");
   let ctx = c.getContext("2d");
   ctx.beginPath();
@@ -106,7 +123,7 @@ function drawRect() {
     sortY = numberSorter(a[0].y * 10, a[1].y * 10);
   let finalX = Math.abs(sortX[0] - sortX[1]),
     finalY = Math.abs(sortY[0] - sortY[1]);
-  ctx.fillRect(sortX[0], sortY[0], finalX, finalY);
+  ctx.fillRect(sortX[0] + 250, -sortY[0] + 250, finalX, -finalY);
 }
 
 function setDistance() {
