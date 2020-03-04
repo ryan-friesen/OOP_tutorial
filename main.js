@@ -49,6 +49,56 @@ function displayDistance() {
   return array;
 }
 
+function colorGradientCanvas() {
+  let c = document.getElementById("visual-canvas");
+  c.width = 502;
+  c.height = 502;
+  let ctx = c.getContext("2d");
+  for(i = 0; i < 51; i++) {
+  ctx.beginPath();
+  ctx.moveTo(i * 10, 0);
+  ctx.lineTo(i * 10, 500);
+  ctx.stroke();
+  ctx.moveTo(0, i * 10);
+  ctx.lineTo(500, i * 10);
+  ctx.stroke();
+  };
+}
+
+function clearRect() {
+  let a = document.getElementById("visual-canvas");
+  let b = a.getContext("2d");
+  b.clearRect(0, 0, 500, 500);
+}
+
+function fillRect() {
+  clearRect();
+  colorGradientCanvas();
+  drawRect();
+  drawLine();
+}
+
+function drawLine() {
+  let a = displayDistance();
+  let c = document.getElementById("visual-canvas");
+  let ctx = c.getContext("2d");
+  ctx.beginPath();
+  ctx.moveTo((a[0].x) * 10, (a[0].y) * 10);
+  ctx.lineTo((a[1].x) * 10, (a[1].y) * 10);
+  ctx.stroke();
+
+}
+
+function drawRect() {
+  let a = displayDistance();
+  let c = document.getElementById("visual-canvas");
+  let ctx = c.getContext("2d");
+  ctx.beginPath();
+  ctx.fillStyle = "#F00";
+  ctx.moveTo((a[0].x) * 10, (a[0].y) * 10);
+  ctx.fillRect((a[0].x) * 10, (a[0].y) * 10, (a[1].x) * 10, (a[1].y) * 10);
+}
+
 function setDistance() {
   let p1 = displayDistance();
   let a = Point.distance(p1[0], p1[1]);

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
-<body onload="displayDistance()">
+<body onload="displayDistance(); colorGradientCanvas();">
 <div class="container row">
 <div class="container col-3">
 <p>In this example, we enter four values, which represent the x and y coordinates of two points:</p>
@@ -48,7 +48,7 @@
 </tr>
 <tr>
 <td colspan="2">
-<button id="submit-button" onclick="setDistance(); showAngle(); outputLine();">Submit</button>
+<button id="submit-button" onclick="setDistance(); showAngle(); fillRect();">Submit</button>
 </td>
 </tr>
 </tbody>
