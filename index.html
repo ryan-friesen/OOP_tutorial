@@ -6,10 +6,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
-<body onload="displayDistance(); colorGradientCanvas();">
-<div class="container row">
+<body id="body" onload="displayDistance(); colorGradientCanvas();">
+<div class="container row col-12">
 <div class="container col-3">
-<p>In this example, we enter four values, which represent the x and y coordinates of two points:</p>
+    <select class="form-control" name="color-menu" id="color-menu">
+        <option value="line">Line</option>
+        <option value="rectangle">Rectangle</option>
+        <option value="circle">Circle</option>
+        <option value="polygon">Polygon</option>
+        </select>
 </div>
 <div class="container col-6">
 <table>

@@ -1,5 +1,3 @@
-// Below is a class declaration:
-
 class Point {
   constructor(x, y) {
     this.x = x;
@@ -21,7 +19,7 @@ class Point {
 }
 
 class Canvas {
-  constructor(x, y) {
+  constructor(x, y, center) {
     this.x = x;
     this.y = y;
   }
@@ -100,6 +98,7 @@ function drawLine() {
   let c = document.getElementById("visual-canvas");
   let ctx = c.getContext("2d");
   ctx.beginPath();
+  ctx.globalAlpha = 0.7;
   ctx.moveTo(a[0].x * 10 + 250, -a[0].y * 10 + 250);
   ctx.lineTo(a[1].x * 10 + 250, -a[1].y * 10 + 250);
   ctx.stroke();
@@ -118,7 +117,7 @@ function drawRect() {
   let c = document.getElementById("visual-canvas");
   let ctx = c.getContext("2d");
   ctx.beginPath();
-  ctx.fillStyle = "#F00";
+  ctx.fillStyle = 'rgba(75,139,151,.7)';
   let sortX = numberSorter(a[0].x * 10, a[1].x * 10),
     sortY = numberSorter(a[0].y * 10, a[1].y * 10);
   let finalX = Math.abs(sortX[0] - sortX[1]),
