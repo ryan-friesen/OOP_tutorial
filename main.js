@@ -19,7 +19,7 @@ class Point {
 }
 
 class Canvas {
-  constructor(x, y, center) {
+  constructor(x, y, centerX, centerY) {
     this.x = x;
     this.y = y;
   }
@@ -32,6 +32,16 @@ class Canvas {
 
     let coordArray = [startX, startY, endX, endY];
     return coordArray;
+  }
+
+  static circle(a, b, x, y) {
+    const width = a;
+    const height = b;
+    const centerX = x;
+    const centerY = y;
+
+    let array = [width, height, centerX, centerY];
+    return array;
   }
 }
 
@@ -101,6 +111,7 @@ function drawLine() {
   ctx.globalAlpha = 0.7;
   ctx.moveTo(a[0].x * 10 + 250, -a[0].y * 10 + 250);
   ctx.lineTo(a[1].x * 10 + 250, -a[1].y * 10 + 250);
+  ctx.lineWidth = 3;
   ctx.stroke();
 }
 
@@ -112,12 +123,71 @@ function numberSorter(a, b) {
   return sortArray;
 }
 
+function changeInputParams() {
+  let a = document.getElementById("shape-menu").value;
+  clearRect();
+  colorGradientCanvas();
+  switch (a) {
+    case "line":
+      basicXYInput();
+      drawLine();
+      setDistance();
+      break;
+    case "rectangle":
+      basicXYInput();
+      drawRect();
+      showArea();
+      break;
+    case "circle":
+      basicCircleInput();
+      drawCircle();
+      break;
+    default:
+      break;
+  }
+}
+
+function basicXYInput() {
+  document.getElementById("input-text-1").innerHTML = "X1:";
+  document.getElementById("input-text-2").innerHTML = "Y1:";
+  document.getElementById("input-text-3").innerHTML = "X2:";
+  document.getElementById("input-text-4").innerHTML = "Y2:";
+}
+
+function basicCircleInput() {
+  document.getElementById("input-text-1").innerHTML = "Width:";
+  document.getElementById("input-text-2").innerHTML = "Height:";
+  document.getElementById("input-text-3").innerHTML = "Center X:";
+  document.getElementById("input-text-4").innerHTML = "Center Y:";
+}
+
+function drawCircle() {
+  let a = createCanvasCircle();
+  let c = document.getElementById("visual-canvas");
+  let ctx = c.getContext("2d");
+  ctx.beginPath();
+  let centerX = 250 + a[2] * 10;
+  let centerY = 250 - a[3] * 10;
+  let width = a[0] * 10;
+  let height = a[1] * 10;
+  ctx.arc(centerX, centerY, width, 0, 2 * Math.PI);
+  ctx.fillStyle = "rgba(75,139,151,.7)";
+  ctx.fill();
+  ctx.stroke();
+}
+
+function createCanvasCircle() {
+  let a = displayDistance();
+  let circle = Canvas.circle(a[0].x, a[0].y, a[1].x, a[1].y);
+  return circle;
+}
+
 function drawRect() {
   let a = createCanvasLine();
   let c = document.getElementById("visual-canvas");
   let ctx = c.getContext("2d");
   ctx.beginPath();
-  ctx.fillStyle = 'rgba(75,139,151,.7)';
+  ctx.fillStyle = "rgba(75,139,151,.7)";
   let sortX = numberSorter(a[0].x * 10, a[1].x * 10),
     sortY = numberSorter(a[0].y * 10, a[1].y * 10);
   let finalX = Math.abs(sortX[0] - sortX[1]),
@@ -132,7 +202,7 @@ function setDistance() {
   document.getElementById("section-one-hypot").innerHTML = a.toFixed(2);
 }
 
-function showAngle() {
+function showArea() {
   let angle = displayDistance();
   let a = Point.getArea(angle[0], angle[1]);
   document.getElementById("section-one-area").innerHTML = a;

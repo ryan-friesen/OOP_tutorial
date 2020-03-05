@@ -9,7 +9,7 @@
 <body id="body" onload="displayDistance(); colorGradientCanvas();">
 <div class="container row col-12">
 <div class="container col-3">
-    <select class="form-control" name="color-menu" id="color-menu">
+    <select class="form-control" name="shape-menu" id="shape-menu" onchange="changeInputParams();">
         <option value="line">Line</option>
         <option value="rectangle">Rectangle</option>
         <option value="circle">Circle</option>
@@ -21,7 +21,7 @@
 <tbody>
 <tr>
 <td>
-<p>Point 1 (x)</p>
+<p id="input-text-1">Point 1 (x)</p>
 </td>
 <td>
 <input id="point-a" length="3" />
@@ -29,7 +29,7 @@
 </tr>
 <tr>
 <td>
-<p>Point 1(y)</p>
+<p id="input-text-2">Point 1(y)</p>
 </td>
 <td>
 <input id="point-b" length="3" />
@@ -37,7 +37,7 @@
 </tr>
 <tr>
 <td>
-<p>Point 2 (x)</p>
+<p id="input-text-3">Point 2 (x)</p>
 </td>
 <td>
 <input id="point-c" length="3" />
@@ -45,7 +45,7 @@
 </tr>
 <tr>
 <td>
-<p>Point 2 (y)</p>
+<p id="input-text-4">Point 2 (y)</p>
 </td>
 <td>
 <input id="point-d" length="3" />
@@ -53,7 +53,7 @@
 </tr>
 <tr>
 <td colspan="2">
-<button id="submit-button" onclick="setDistance(); showAngle(); fillRect();">Submit</button>
+<button id="submit-button" onclick="changeInputParams();">Submit</button>
 </td>
 </tr>
 </tbody>

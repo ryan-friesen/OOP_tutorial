@@ -1,26 +1,24 @@
 #body {
-
-    background: linear-gradient(45deg, #55381D, #FFD389);
-    background-attachment: fixed;
+  background: linear-gradient(45deg, #55381d, #ffd389);
+  background-attachment: fixed;
 }
 
 #visual-canvas {
-    margin: auto;
-    background: #fff;
+  margin: auto;
+  background: #fff;
 }
 
 table {
-    background: linear-gradient(45deg, #4B8B97, #A9EFFC);
-    width: 100%;
-    background-position: center;
-    text-align: center;
-
+  background: linear-gradient(45deg, #4b8b97, #a9effc);
+  width: 100%;
+  background-position: center;
+  text-align: center;
 }
 
 input {
-    float: left;
+  float: left;
 }
 
 .container {
-    padding: 15px;
+  padding: 15px;
 }
