@@ -70,8 +70,8 @@ function createCanvasLine() {
 
 function colorGradientCanvas() {
   let c = document.getElementById("visual-canvas");
-  c.width = 502;
-  c.height = 502;
+  c.width = 501;
+  c.height = 501;
   let ctx = c.getContext("2d");
   for (i = 0; i < 51; i++) {
     if (i == 25) {
@@ -93,13 +93,6 @@ function clearRect() {
   let a = document.getElementById("visual-canvas");
   let b = a.getContext("2d");
   b.clearRect(0, 0, 500, 500);
-}
-
-function fillRect() {
-  clearRect();
-  colorGradientCanvas();
-  drawRect();
-  drawLine();
 }
 
 function drawLine() {
@@ -124,9 +117,13 @@ function numberSorter(a, b) {
 }
 
 function changeInputParams() {
-  let a = document.getElementById("shape-menu").value;
-  clearRect();
-  colorGradientCanvas();
+  let a = document.getElementById("shape-menu").value,
+    b = document.getElementById("clear-menu");
+  if (b.value == "clear") {
+    console.log("clear");
+    clearRect();
+    colorGradientCanvas();
+  }
   switch (a) {
     case "line":
       basicXYInput();
@@ -198,14 +195,14 @@ function drawRect() {
 function setDistance() {
   let p1 = displayDistance();
   let a = Point.distance(p1[0], p1[1]);
-  document.getElementById("section-one-hypot-long").innerHTML = a;
-  document.getElementById("section-one-hypot").innerHTML = a.toFixed(2);
+  document.getElementById("output-one").innerHTML = a;
+  document.getElementById("output-two").innerHTML = a.toFixed(2);
 }
 
 function showArea() {
   let angle = displayDistance();
   let a = Point.getArea(angle[0], angle[1]);
-  document.getElementById("section-one-area").innerHTML = a;
+  document.getElementById("output-three").innerHTML = a;
 }
 
 function outputLine() {
